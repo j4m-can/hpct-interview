@@ -1,0 +1,9 @@
+allow:
+  hosts: true
+  hosts_allow: true
+  hosts_deny: false
+files:
+- hosts
+- hosts_allow
+- hosts_deny
+path: /etc

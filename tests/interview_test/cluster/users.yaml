@@ -1,0 +1,56 @@
+- kind: branch
+  name: users-branch
+  interview:
+    - kind: set
+      key: user.count
+      type: int
+      value: 0
+    - kind: question
+      title: Users
+      text: Add user?
+      type: str
+      key: user.add
+      default: n
+    - kind: branch
+      match_key: user.add
+      match_not_values: [n]
+      interview:
+        - kind: question
+          title: Users
+          text: User to add.
+          type: str
+          key: user.name
+          parameterize: user.count
+        - kind: question
+          title: Users
+          text: User group.
+          type: str
+          key: user.group
+          parameterize: user.count
+        - kind: update
+          key: user.count
+          type: int
+          value: 1
+        - kind: question
+          title: Users
+          text: Add another user?
+          type: str
+          force: True
+          key: user.add
+          default: n
+    - kind: branch
+      match_key: user.count
+      match_not_values: [0]
+      interview:
+        - kind: question
+          title: Users
+          text: Keep users and groups?
+          key: users.keep
+          type: str
+          values: [y, n]
+        - kind: branch
+          match_key: users.keep
+          match_values: [n]
+          interview:
+            - kind: reset
+              name_regexp: (user.add|users.keep|user.count|user.name\.[0-9]+|user.group\.[0-9]+)

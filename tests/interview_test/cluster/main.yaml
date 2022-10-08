@@ -1,0 +1,8 @@
+# cluster/main
+
+- kind: include
+  path: ldap.yaml
+- kind: include
+  path: slurm.yaml
+- kind: include
+  path: users.yaml

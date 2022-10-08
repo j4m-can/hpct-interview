@@ -1,0 +1,119 @@
+- kind: branch
+  disabled: True
+  interview:
+    - kind: question
+      title: File food data
+      text: Select foods (space separated).
+      type: ssv
+      key: foods
+      default: bananas peanuts
+      multivalue: True
+      required: True
+      values_from_file: foods.txt
+      values_sort: asc
+    - kind: question
+      title: Compute Nodes
+      text: Number of compute nodes (to start)?
+      type: int
+      key: ncomputes
+      range: 1-1024
+    - kind: question
+      title: LDAP
+      text: Using existing LDAP installation
+      type: str
+      key: existingldap
+      values: [y, n]
+    - kind: branch
+      match_key: existingldap
+      match_values: [y]
+      interview:
+        - kind: question
+          title: LDAP
+          text: LDAP URI
+          type: str
+          key: ldapurl
+          regexp: (ldap|ldaps)://(.*?)/
+- kind: branch
+  match_key: existingldap
+  match_values: [n]
+  interview:
+    - kind: setting
+      key: ldapurl
+      type: str
+      value: ""
+
+- kind: branch
+  interview:
+    - kind: setting
+      key: usercount
+      type: int
+      value: 0
+    - kind: question
+      title: Users
+      text: Add user?
+      type: str
+      key: adduser
+      default: n
+    - kind: branch
+      match_key: adduser
+      match_not_values: [n]
+      interview:
+        - kind: question
+          title: Users
+          text: User to add.
+          type: str
+          key: user
+          parameterize: usercount
+        - kind: question
+          title: Users
+          text: User group.
+          type: str
+          key: group
+          parameterize: usercount
+        - kind: update
+          key: usercount
+          type: int
+          value: 1
+        - kind: question
+          title: Users
+          text: Add another user?
+          type: str
+          force: True
+          key: adduser
+          default: n
+    - kind: branch
+      match_key: usercount
+      match_not_values: [0]
+      interview:
+        - kind: question
+          title: Users
+          text: Keep users and groups?
+          key: keepusers
+          type: str
+          values: [y, n]
+        - kind: branch
+          match_key: keepusers
+          match_values: [n]
+          interview:
+            - kind: reset
+              name_regexp: (adduser|keepusers|usercount|user\.[0-9]+|group\.[0-9]+)
+
+- kind: question
+  title: Slurm
+  text: Slurm configuration.
+  type: str
+  key: slurmconfig
+  values: ["dev", "dev+prod"]
+- kind: question
+  title: Filename
+  text: Configuration filename.
+  type: str
+  key: configfilename
+  values_from_directory: file:/etc
+  values_sort: asc
+  values_regexp: (yp\.*)
+- title: Integers
+  text: Select an integer.
+  type: int
+  key: selectedint
+  values: [10, 12, 40]

@@ -1,0 +1,9 @@
+- kind: branch
+  name: slurm-branch
+  interview:
+    - kind: question
+      title: Slurm
+      text: Slurm configuration.
+      type: str
+      key: slurm.config
+      values: ["dev", "dev+prod"]

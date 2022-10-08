@@ -1,0 +1,14 @@
+- kind: set
+  key: url
+  type: str
+  value: http:/example.com/
+- kind: set
+  key: alternate_port
+  type: int
+  range: 1024-65535
+  value: 1234
+- kind: set
+  key: usernames
+  type: ssv
+  multivalue: True
+  value: joe gary phil

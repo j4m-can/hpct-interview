@@ -1,0 +1,10 @@
+- kind: question
+  title: Personal Information
+  text: What is your name?
+  key: name
+  type: str
+- kind: question
+  title: Personal Information
+  text: What is your address?
+  key: address
+  type: str

@@ -1,0 +1,21 @@
+- kind: branch
+  name: nodes-branch
+  interview:
+    - kind: question
+      title: Cluster Nodes
+      text: How many head nodes?
+      type: int
+      key: nodes.nhead
+      values_range:
+    - kind: question
+      title: Cluster Nodes
+      text: How many compute nodes?
+      type: int
+      key: nodes.ncompute
+      values_range:
+    - kind: notice
+      title: Cluster Nodes
+      text: Slurm nodes
+      type: int
+      key: nodes.nslurm
+      value: 1

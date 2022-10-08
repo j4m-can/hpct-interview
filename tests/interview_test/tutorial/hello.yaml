@@ -1,0 +1,6 @@
+- kind: notice
+  title: Welcome
+  text: Hello to you and welcome!
+  key: hello
+  type: bool
+  default: True

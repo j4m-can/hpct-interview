@@ -1,0 +1,1 @@
+{"existingldap": "n", "slurmconfig": "dev", "usercount": 1, "adduser": "n", "user.0": "john", "group.0": "main", "keepusers": "y"}

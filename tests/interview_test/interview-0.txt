@@ -1,0 +1,121 @@
+Script started on 2022-08-19 11:38:17-06:00 [TERM="xterm-256color" TTY="/dev/pts/11" COLUMNS="164" LINES="17"]
+passed
+==========
+walkpath:           [0, 0]
+name:               -
+key:                existingldap
+parameterized key:  existingldap
+parameterize:       -
+type:               str
+multivalue:         -
+range:              -
+regexp:             -
+required:           -
+----------
+title:              LDAP
+text:               Using existing LDAP installation
+values:             ['y', 'n']
+default:            -
+answer: n
+==========
+walkpath:           [1, 0]
+name:               -
+key:                slurmconfig
+parameterized key:  slurmconfig
+parameterize:       -
+type:               str
+multivalue:         -
+range:              -
+regexp:             -
+required:           -
+----------
+title:              Slurm
+text:               Slurm configuration.
+values:             ['dev', 'dev+prod']
+default:            -
+answer: dev
+==========
+walkpath:           [2, 0]
+name:               -
+key:                adduser
+parameterized key:  adduser
+parameterize:       -
+type:               str
+multivalue:         -
+range:              -
+regexp:             -
+required:           -
+----------
+title:              Users
+text:               Add user?
+values:             -
+default:            n
+answer: y
+==========
+walkpath:           [2, 0, 2]
+name:               -
+key:                user
+parameterized key:  user.0
+parameterize:       usercount
+type:               str
+multivalue:         -
+range:              -
+regexp:             -
+required:           -
+----------
+title:              Users
+text:               User to add.
+values:             -
+default:            -
+answer: john
+==========
+walkpath:           [2, 0, 2]
+name:               -
+key:                group
+parameterized key:  group.0
+parameterize:       usercount
+type:               str
+multivalue:         -
+range:              -
+regexp:             -
+required:           -
+----------
+title:              Users
+text:               User group.
+values:             -
+default:            -
+answer: main
+==========
+walkpath:           [2, 0, 2]
+name:               -
+key:                adduser
+parameterized key:  adduser
+parameterize:       -
+type:               str
+multivalue:         -
+range:              -
+regexp:             -
+required:           -
+----------
+title:              Users
+text:               Add another user?
+values:             -
+default:            n
+answer: n
+==========
+walkpath:           [2, 0, 3]
+name:               -
+key:                keepusers
+parameterized key:  keepusers
+parameterize:       -
+type:               str
+multivalue:         -
+range:              -
+regexp:             -
+required:           -
+----------
+title:              Users
+text:               Keep users and groups?
+values:             ['y', 'n']
+default:            -
+answer: y

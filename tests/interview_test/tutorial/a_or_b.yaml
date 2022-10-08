@@ -1,0 +1,26 @@
+- kind: question
+  title: A or B
+  text: Do you want "a" or "b"?
+  key: choice
+  type: str
+  values: [a, b]
+- kind: branch
+  match_key: choice
+  match_values: [a]
+  interview:
+    - kind: notice
+      title: Your choice
+      text: You picked "a"!
+      key: choice-a
+      type: bool
+      default: True
+- kind: branch
+  match_key: choice
+  match_values: [b]
+  interview:
+    - kind: notice
+      title: You choice
+      text: You picked "b"!
+      key: choice-b
+      type: bool
+      default: True

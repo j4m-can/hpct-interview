@@ -1,0 +1,42 @@
+#- kind: set
+#  section: preferences
+#  key: set-preferences
+#  type: bool
+#  value: True
+- kind: branch
+  section: preferences
+  match_key: set-preferences
+#  match_values: [True]
+  match_not_values: [False]
+  type: bool
+  interview:
+  - kind: question
+    section: preferences
+    title: Preferences
+    text: What is your favorite fruit?
+    key: favfruit
+    type: str
+  - kind: question
+    section: preferences
+    title: Preferences
+    text: What is your favorite vegetable?
+    key: favvegetable
+    type: str
+  - kind: question
+    section: preferences
+    title: Preferences
+    text: Do you want to save your settings?
+    key: save-preferences
+    type: str
+    values: [y, n]
+  - kind: branch
+    section: preferences
+    match_key: save-preferences
+    match_values: [n]
+    interview:
+      - kind: reset
+        section: preferences
+        key: set-preferences
+        type: bool
+        value: False
+        reset_keys: [favfruit, favvegetable, save-preferences]
