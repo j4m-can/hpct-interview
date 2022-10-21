@@ -717,12 +717,26 @@ class Interview:
                     "----------\n"
                 )
 
-            print(
-                f"""title:              {item.get("title", "-")}\n"""
-                f"""text:               {item.get("text", "-")}\n"""
-                f"""values:             {item.get("values", "-")}\n"""
-                f"""default:            {item.get("default", "-")}"""
-            )
+                print(
+                    f"""title:              {item.get("title", "-")}\n"""
+                    f"""text:               {item.get("text", "-")}\n"""
+                    f"""values:             {item.get("values", "-")}\n"""
+                    f"""default:            {item.get("default", "-")}"""
+                )
+            else:
+                title = item.get("title", "Untitled")
+                uline = "-" * len(title)
+                text = item.get("text", "-")
+                values = item.get("values")
+
+                print(
+                    f"""------------------------------\n"""
+                    f"""{title}\n"""
+                    f"""{uline}\n"""
+                    f"""{text}\n"""
+                )
+                if values:
+                    print(f"""choices: {" ".join(values)}\n""")
 
             try:
                 try:
