@@ -768,6 +768,12 @@ class Interview:
                             reply = input(f"answer [{default}]: ")
 
                     item.set(reply)
+
+                except ValueError:
+                    # retry
+                    print("error: invalid/unrecognized answer")
+                    pass
+
                 except KeyboardInterrupt:
                     input("\nCTRL-C to exit, ENTER to print settings")
                     print(self.settings)
